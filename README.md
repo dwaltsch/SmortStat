@@ -1,2 +1,8 @@
 # SmortStat
-SmortStat Github Client App
+SmortStat Server Code
+
+
+
+
+
+this will be updated over time
