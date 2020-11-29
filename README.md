@@ -1,5 +1,5 @@
 # SmortStat
-SmortStat Server Code
+SmortStat Server Code on Github
 
 
 
