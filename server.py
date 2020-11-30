@@ -5,7 +5,7 @@ from flask.json import jsonify
 import psutil
 import socket
 import clr, json, platform, os
-
+import os
 ip = socket.gethostbyname(socket.gethostname())
 app = Flask(__name__)
 
@@ -28,6 +28,10 @@ def CPU():
 @app.route('/LAN', methods=['GET'])
 def LAN():
     return jsonify(LANSTATS= str(psutil.net_io_counters())
+                   )
+@app.route('/NAME', methods=['GET'])
+def Name():
+    return jsonify(NAME= str(socket.gethostname())
                    )
 
 @app.route('/TEMP', methods=['GET'])
@@ -75,7 +79,7 @@ def RAM():
 if __name__== "__main__":
     print("Enter this in the APP")
     print(ip)
-    app.run(host ='0.0.0.0',port=5000)
+    app.run(host ='0.0.0.0', port=5000,)
 
 
 
