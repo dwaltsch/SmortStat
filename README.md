@@ -15,6 +15,9 @@ Source Code of the SmortStat Client
  2. download and unzip
  3. execute as Admin
  
+# Authors
+* [Dwaltsch](https://github.com/dwaltsch)
+* [AlexanderSeyringer](https://github.com/alexanderseyringer)
 # Errors
 If you encounter any problems make sure you
 * ran as Admin
