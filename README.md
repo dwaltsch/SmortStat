@@ -6,8 +6,7 @@ Source Code of the SmortStat Client
 
 * From the Website:
 
- 1. Download from the [Website] 
-(https://realsmort.tech/)
+ 1. Download from the Website
  2. unzip the file
  3. execute as Admin
 
