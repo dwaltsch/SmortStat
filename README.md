@@ -1,6 +1,6 @@
 # SmortStat
 
-Source Code of the SmortStat Client
+Source Code of the SmortStat Client an App to Monitor your PC remotly
 
 # Installation
 
