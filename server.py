@@ -6,6 +6,8 @@ import psutil
 import socket
 import clr, json, platform, os
 import os
+import requests
+import logging
 ip = socket.gethostbyname(socket.gethostname())
 app = Flask(__name__)
 
@@ -13,6 +15,7 @@ OHM_hwtypes = [ 'Mainboard', 'SuperIO', 'CPU', 'RAM', 'GpuNvidia', 'GpuAti', 'TB
 OHM_sensortypes = [
  'Voltage', 'Clock', 'Temperature', 'Load', 'Fan', 'Flow', 'Control', 'Level', 'Factor', 'Power', 'Data', 'SmallData'
 ]
+entsch = "no"
 
 @app.route('/')
 def home():
@@ -20,6 +23,7 @@ def home():
 
 @app.route('/CPU', methods=['GET'])
 def CPU():
+    app.logger.error('CPU Request')
     return jsonify(CPUUSE=str(psutil.cpu_percent(interval=0.1, percpu=True)),
                    CPUTIME=str(psutil.cpu_times_percent(interval=0.1, percpu=False)),
                    CPUCORECOUNT=str(psutil.cpu_count(logical=True)),
@@ -27,15 +31,18 @@ def CPU():
                    )
 @app.route('/LAN', methods=['GET'])
 def LAN():
+    app.logger.error('LAN Request')
     return jsonify(LANSTATS= str(psutil.net_io_counters())
                    )
 @app.route('/NAME', methods=['GET'])
 def Name():
+    app.logger.error('Name Request')
     return jsonify(NAME= str(socket.gethostname())
                    )
 
 @app.route('/TEMP', methods=['GET'])
 def TEMP():
+    app.logger.error('Temp Request')
     def init_OHM():
         clr.AddReference(os.path.abspath(os.path.dirname(__file__)) + R'\OpenHardwareMonitorLib.dll')
         from OpenHardwareMonitor import Hardware
@@ -71,15 +78,17 @@ def TEMP():
     return main()
 @app.route('/RAM', methods=['GET'])
 def RAM():
+    app.logger.error('RAM Request')
     return jsonify(
         RAM=str(psutil.virtual_memory()),
         RAMINSTALLED=str(psutil.swap_memory()),
                    )
 
+
 if __name__== "__main__":
+    print("enable logs yes or no")
+    entsch = input()
+    print("ignore the errors")
     print("Enter this in the APP")
     print(ip)
     app.run(host ='0.0.0.0', port=5000,)
-
-
-
