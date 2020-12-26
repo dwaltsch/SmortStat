@@ -1,5 +1,5 @@
 #imports
-from flask import Flask
+from flask import Flask , request
 import time
 import datetime
 from flask.json import jsonify
@@ -86,9 +86,14 @@ def RAM():
         RAM=str(psutil.virtual_memory()),
         RAMINSTALLED=str(psutil.swap_memory()),
                    )
-@app.route('/SDW', methods=['POST'])
-def sdw():
+@app.route('/RES', methods=['GET'])
+def res():
     os.system("shutdown /r /t 1");
+    return "Restarting"
+
+@app.route('/SDW', methods=['GET'])
+def sdw():
+    os.system("shutdown /s /t 1");
     return "Shutting Down"
 
 
