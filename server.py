@@ -1,3 +1,4 @@
+#imports
 from flask import Flask
 import time
 import datetime
@@ -8,6 +9,8 @@ import clr, json, platform, os
 import os
 import requests
 import logging
+
+#vars
 ip = socket.gethostbyname(socket.gethostname())
 app = Flask(__name__)
 
@@ -83,6 +86,10 @@ def RAM():
         RAM=str(psutil.virtual_memory()),
         RAMINSTALLED=str(psutil.swap_memory()),
                    )
+@app.route('/SDW', methods=['POST'])
+def sdw():
+    os.system("shutdown /r /t 1");
+    return "Shutting Down"
 
 
 if __name__== "__main__":
