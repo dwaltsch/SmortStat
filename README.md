@@ -26,7 +26,7 @@ If you encounter any problems make sure you
 If this doesnt help make sure to open an Issue
 
 # Roadmap
-Beta Release End of 2020
+Beta Release at the End of 2020
 Season Patch every 2-3 months with new content
 
 # Contributing
