@@ -91,4 +91,4 @@ if __name__== "__main__":
     print("ignore the errors")
     print("Enter this in the APP")
     print(ip)
-    app.run(host ='0.0.0.0', port=5000,)
+    app.run(host ='0.0.0.0', port=80,)
