@@ -23,6 +23,7 @@ If you encounter any problems make sure you
 * ran as Admin
 * entered the correct IP Address (not the 0.0.0.0 one)
 * used Windows as Linux is currently not officialy supported
+
 If this doesnt help make sure to open an Issue
 
 # Roadmap
