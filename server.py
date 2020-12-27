@@ -1,14 +1,17 @@
 #imports
 from flask import Flask , request
+from flask.json import jsonify
 import time
 import datetime
-from flask.json import jsonify
 import psutil
 import socket
-import clr, json, platform, os
+import clr
+import json
+import platform
 import os
 import requests
 import logging
+import platform
 
 #vars
 ip = socket.gethostbyname(socket.gethostname())
@@ -95,6 +98,16 @@ def res():
 def sdw():
     os.system("shutdown /s /t 1");
     return "Shutting Down"
+
+@app.route('/UBD', methods=['GET'])
+def update():
+    bst = platform.system()
+    if bst == "Windows":
+        return "Windows detected: Updating via Command Line"
+    if bst == "Linux":
+        return "Linux detected: Updating via Command Line"
+    if bst == "Darwin":
+        return "MacOS is not officially supported yet"
 
 
 if __name__== "__main__":
