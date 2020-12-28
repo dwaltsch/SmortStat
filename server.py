@@ -103,6 +103,7 @@ def sdw():
 def update():
     bst = platform.system()
     if bst == "Windows":
+        print("Warning: Pog")
         return "Windows detected: Updating via Command Line"
     if bst == "Linux":
         return "Linux detected: Updating via Command Line"
