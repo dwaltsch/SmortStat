@@ -20,10 +20,6 @@ app = Flask(__name__)
 dashboard.bind(app)
 #pw Admin Admin
 
-OHM_hwtypes = [ 'Mainboard', 'SuperIO', 'CPU', 'RAM', 'GpuNvidia', 'GpuAti', 'TBalancer', 'Heatmaster', 'HDD' ]
-OHM_sensortypes = [
- 'Voltage', 'Clock', 'Temperature', 'Load', 'Fan', 'Flow', 'Control', 'Level', 'Factor', 'Power', 'Data', 'SmallData'
-]
 entsch = "no"
 
 @app.route('/')
@@ -49,42 +45,6 @@ def Name():
     return jsonify(NAME= str(socket.gethostname())
                    )
 
-@app.route('/TEMP', methods=['GET'])
-def TEMP():
-    app.logger.error('Temp Request')
-    def init_OHM():
-        clr.AddReference(os.path.abspath(os.path.dirname(__file__)) + R'\OpenHardwareMonitorLib.dll')
-        from OpenHardwareMonitor import Hardware
-        hw = Hardware.Computer()
-        hw.CPUEnabled, hw.GPUEnabled, = True, True,
-        hw.Open()
-        return hw
-
-    def fetch_data(handle):
-        out = []
-        for i in handle.Hardware:
-            i.Update()
-            for sensor in i.Sensors:
-                thing = parse_sensor(sensor)
-                if thing is not None:
-                    out.append(thing)
-            for j in i.SubHardware:
-                j.Update()
-                for subsensor in j.Sensors:
-                    thing = parse_sensor(subsensor)
-                    out.append(thing)
-        return out
-
-    def parse_sensor(snsr):
-        if snsr.Value is not None:
-            if snsr.SensorType == OHM_sensortypes.index('Temperature'):
-                HwType = OHM_hwtypes[snsr.Hardware.HardwareType]
-                return {"Reading": snsr.Value}
-
-    def main():
-        return json.dumps({platform.node(): fetch_data(init_OHM())}, indent=1, sort_keys=True, ensure_ascii=False)
-
-    return main()
 @app.route('/RAM', methods=['GET'])
 def RAM():
     app.logger.error('RAM Request')
@@ -120,4 +80,4 @@ if __name__== "__main__":
     print("ignore the errors")
     print("Enter this in the APP")
     print(ip)
-    app.run(host ='0.0.0.0', port=80,)
+    app.run(threaded=True,host ='0.0.0.0', port=80,)
