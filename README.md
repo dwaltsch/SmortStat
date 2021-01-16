@@ -33,3 +33,5 @@ Season Patch every 2-3 months with new content
 # Contributing
 Pull requests are welcome. For future features open an Issue or make a Pull Request
 
+#Risiken und Nebenwirkungen
+Bei Risiken und Nebenwirkungen schlagen Sie ihren Arzt oder Apotheker.
