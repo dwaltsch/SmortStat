@@ -1,19 +1,6 @@
 # SmortStat
 
 Source Code of the SmortStat Client an App to Monitor your PC remotly
-
-# Installation
-
-* From the Website:
-
- 1. Download from the Website
- 2. unzip the file
- 3. execute as Admin
-
-* From Github:
- 1. go to the releases tab
- 2. download and unzip
- 3. execute as Admin
  
 # Authors
 * [Dwaltsch](https://github.com/dwaltsch)
@@ -27,8 +14,10 @@ If you encounter any problems make sure you
 If this doesnt help make sure to open an Issue
 
 # Roadmap
-Beta Release at the End of 2020
-Season Patch every 2-3 months with new content
+Release sometime in the next 5 years
+
+#Branches
+Download from dev branch if you encounter any problems
 
 # Contributing
 Pull requests are welcome. For future features open an Issue or make a Pull Request
