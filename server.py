@@ -12,13 +12,23 @@ import os
 import requests
 import logging
 import platform
+import sys
+from logging.handlers import TimedRotatingFileHandler
 
 #vars
 ip = socket.gethostbyname(socket.gethostname()) # fix wrong IP
 app = Flask(__name__)
 
-#currently based on flask and psutil rewrite in c++
+formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+handler = TimedRotatingFileHandler('log.smortstat', when="midnight", interval=1, encoding='utf8')
+handler.suffix = "%Y-%m-%d"
+handler.setFormatter(formatter)
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+logger.addHandler(handler)
 
+#currently based on flask and psutil rewrite in c++
+#add logging support
 
 @app.route('/')
 def home():
@@ -79,6 +89,7 @@ def update():
 
 
 if __name__== "__main__":
+    logger.error('An exception occurred at %s', 'Error') #experimental not yet working
     print("Enter this in the APP")
     print(ip)
     app.run(host ='0.0.0.0', port=80,)
