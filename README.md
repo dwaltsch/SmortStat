@@ -16,7 +16,7 @@ If this doesnt help make sure to open an Issue
 # Roadmap
 Release sometime in the next 5 years
 
-#Branches
+# Branches
 Download from dev branch if you encounter any problems
 
 # Contributing
