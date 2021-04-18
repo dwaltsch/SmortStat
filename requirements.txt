@@ -2,3 +2,5 @@ pythonping~=1.0.15
 requests~=2.25.0
 Flask~=1.1.2
 setuptools~=47.1.0
+psutil~=5.8.0
+tqdm~=4.55.0
