@@ -18,6 +18,7 @@ from logging.handlers import TimedRotatingFileHandler
 #vars
 ip = socket.gethostbyname(socket.gethostname()) # fix wrong IP
 app = Flask(__name__)
+ms = "http://api.smortify.com"
 
 formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
 handler = TimedRotatingFileHandler('log.smortstat', when="midnight", interval=1, encoding='utf8')
@@ -29,7 +30,10 @@ logger.addHandler(handler)
 
 #currently based on flask and psutil rewrite in c++
 #add logging support
-
+def getid():
+    r = request.get(ms)
+    id = r.text
+    return id
 @app.route('/')
 def home():
     return 'Welcome to SmortStat Server'
@@ -89,7 +93,8 @@ def update():
 
 
 if __name__== "__main__":
-    logger.error('An exception occurred at %s', 'Error') #experimental not yet working
+    id = getid()
+    print(id)
     print("Enter this in the APP")
     print(ip)
     app.run(host ='0.0.0.0', port=80,)
